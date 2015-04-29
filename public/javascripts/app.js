@@ -32,4 +32,9 @@ function loadStandings(){
 $(function(){
   //load standings when the page loads
   loadStandings();
+
+  $('#refresh-list').on('click', function(e){
+    e.preventDefault();
+    loadStandings();
+  });
 });
