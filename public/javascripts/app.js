@@ -14,6 +14,8 @@ function buildTeamRow(team){
 }
 
 function loadStandings(){
+  var $refreshIcon = $('#refresh-list i')
+  $refreshIcon.addClass('fa-spin');
   $.ajax({
     url: '/teams.json',
     success: function(data){
@@ -22,6 +24,7 @@ function loadStandings(){
       for(var i = 0; i < data.length; i++){
         $('table tbody').append(buildTeamRow(data[i]));
       }
+      $refreshIcon.removeClass('fa-spin');
     },
     error: function(xhr, httpStatus, errorThrown){
       alert("Something went wrong. Please try again later.");
