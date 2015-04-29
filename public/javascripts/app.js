@@ -1,14 +1,17 @@
-// Failing Ajax call with a friendly error message
-$("#get-time").on('click', function(e){
-  e.preventDefault();
+// Using data from JSON
+function loadStandings(){
   $.ajax({
-    url: '/failing_time.json',
-    dataType: 'json',
+    url: '/teams.json',
     success: function(data){
-      alert("the time is: " + data.time);
+      console.log(data);
     },
     error: function(xhr, httpStatus, errorThrown){
-      alert("The clock is unavailable due to a server side " + httpStatus);
+      alert("Something went wrong. Please try again later.");
     }
-  });
+  })
+}
+
+$(function(){
+  //load standings when the page loads
+  loadStandings();
 });
